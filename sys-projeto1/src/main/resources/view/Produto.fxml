@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- Tela principal (pode ser aberta no Scene Builder) -->
+<!-- fim da tela -->
+
+<TabPane prefHeight="650" prefWidth="1050" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Produtocontroller"> <!-- painel de abas ligado ao controlador -->
+   <tabs> <!-- lista de abas -->
+      <Tab text="Produtos"> <!-- primeira aba -->
+         <content> <!-- conteúdo da aba -->
+            <VBox spacing="10"> <!-- container vertical da aba -->
+               <padding><Insets bottom="10" left="10" right="10" top="10" /></padding> <!-- margem interna -->
+               <HBox alignment="CENTER_LEFT" spacing="10"> <!-- linha de consulta -->
+                  <Label style="-fx-font-weight: bold;" text="Consultar por Código:" /> <!-- rótulo da consulta -->
+                  <TextField fx:id="txtConsulta" prefWidth="200" promptText="Ex: PROD0001" /> <!-- campo do código a consultar -->
+                  <Button onAction="#consultar" text="Consultar" /> <!-- chama consultar() -->
+                  <Button onAction="#listarTodos" text="Listar Todos" /> <!-- chama listarTodos() -->
+               </HBox> <!-- fim da linha de consulta -->
+               <HBox spacing="15"> <!-- formulário à esquerda e tabela à direita -->
+                  <VBox prefWidth="430" spacing="8"> <!-- coluna do formulário -->
+                     <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Dados do Produto" /> <!-- título do formulário -->
+                     <GridPane hgap="10" vgap="8"> <!-- grade dos dados do produto -->
+                        <Label text="Código:" GridPane.columnIndex="0" GridPane.rowIndex="0" /> <!-- rótulo do código -->
+                        <TextField fx:id="txtCodigo" prefWidth="260" promptText="Ex: PROD0001" GridPane.columnIndex="1" GridPane.rowIndex="0" /> <!-- campo do código -->
+                        <Label text="Nome:" GridPane.columnIndex="0" GridPane.rowIndex="1" /> <!-- rótulo do nome -->
+                        <TextField fx:id="txtNome" promptText="Insira o nome do produto" GridPane.columnIndex="1" GridPane.rowIndex="1" /> <!-- campo do nome -->
+                        <Label text="Descrição:" GridPane.columnIndex="0" GridPane.rowIndex="2" /> <!-- rótulo da descrição -->
+                        <TextField fx:id="txtDescricao" promptText="Insira a descrição" GridPane.columnIndex="1" GridPane.rowIndex="2" /> <!-- campo da descrição -->
+                        <Label text="Data Fabricação:" GridPane.columnIndex="0" GridPane.rowIndex="3" /> <!-- rótulo da fabricação -->
+                        <DatePicker fx:id="dpFabricacao" prefWidth="260" promptText="dd/mm/aaaa" GridPane.columnIndex="1" GridPane.rowIndex="3" /> <!-- seletor da fabricação -->
+                        <Label text="Data Validade:" GridPane.columnIndex="0" GridPane.rowIndex="4" /> <!-- rótulo da validade -->
+                        <DatePicker fx:id="dpValidade" prefWidth="260" promptText="dd/mm/aaaa" GridPane.columnIndex="1" GridPane.rowIndex="4" /> <!-- seletor da validade -->
+                        <Label text="Preço Compra (R$):" GridPane.columnIndex="0" GridPane.rowIndex="5" /> <!-- rótulo do preço de compra -->
+                        <TextField fx:id="txtPrecoCompra" promptText="Ex: 10.50" GridPane.columnIndex="1" GridPane.rowIndex="5" /> <!-- campo do preço de compra -->
+                        <Label text="Preço Venda (R$):" GridPane.columnIndex="0" GridPane.rowIndex="6" /> <!-- rótulo do preço de venda -->
+                        <TextField fx:id="txtPrecoVenda" promptText="Ex: 15.90" GridPane.columnIndex="1" GridPane.rowIndex="6" /> <!-- campo do preço de venda -->
+                        <Label text="Qtd. em Estoque:" GridPane.columnIndex="0" GridPane.rowIndex="7" /> <!-- rótulo do estoque -->
+                        <TextField fx:id="txtQuantidade" promptText="Ex: 50" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <columnConstraints>
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints />
+                           <RowConstraints />
+                           <RowConstraints />
+                           <RowConstraints />
+                           <RowConstraints />
+                           <RowConstraints />
+                           <RowConstraints />
+                           <RowConstraints />
+                        </rowConstraints> <!-- campo do estoque -->
+                     </GridPane> <!-- fim da grade do produto -->
+                     <Label style="-fx-font-weight: bold; -fx-font-size: 13;" text="Dados da Categoria" /> <!-- título da categoria -->
+                     <GridPane hgap="10" vgap="8"> <!-- grade dos dados da categoria -->
+                        <Label text="ID Categoria:" GridPane.columnIndex="0" GridPane.rowIndex="0" /> <!-- rótulo do id da categoria -->
+                        <TextField fx:id="txtCatId" prefWidth="260" promptText="Ex: 1" GridPane.columnIndex="1" GridPane.rowIndex="0" /> <!-- campo do id da categoria -->
+                        <Label text="Nome Categoria:" GridPane.columnIndex="0" GridPane.rowIndex="1" /> <!-- rótulo do nome da categoria -->
+                        <TextField fx:id="txtCatNome" promptText="Ex: Grãos e Cereais" GridPane.columnIndex="1" GridPane.rowIndex="1" /> <!-- campo do nome da categoria -->
+                        <Label text="Setor:" GridPane.columnIndex="0" GridPane.rowIndex="2" /> <!-- rótulo do setor -->
+                        <TextField fx:id="txtCatSetor" promptText="Ex: Mercearia, Limpeza" GridPane.columnIndex="1" GridPane.rowIndex="2" /> <!-- campo do setor -->
+                        <Label text="Descrição Categoria:" GridPane.columnIndex="0" GridPane.rowIndex="3" /> <!-- rótulo da descrição da categoria -->
+                        <TextField fx:id="txtCatDescricao" promptText="Insira a descrição da categoria" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <columnConstraints>
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints />
+                           <RowConstraints />
+                           <RowConstraints />
+                           <RowConstraints />
+                        </rowConstraints> <!-- campo da descrição da categoria -->
+                     </GridPane> <!-- fim da grade da categoria -->
+                     <HBox spacing="10"> <!-- linha de botões -->
+                        <Button onAction="#cadastrar" text="Cadastrar" /> <!-- chama cadastrar() -->
+                        <Button onAction="#atualizar" text="Atualizar" /> <!-- chama atualizar() -->
+                        <Button onAction="#excluir" text="Excluir" /> <!-- chama excluir() -->
+                        <Button onAction="#limpar" text="Limpar" /> <!-- chama limpar() -->
+                     </HBox> <!-- fim dos botões -->
+                  </VBox> <!-- fim da coluna do formulário -->
+                  <VBox spacing="8" HBox.hgrow="ALWAYS"> <!-- coluna da tabela -->
+                     <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Produtos Cadastrados" /> <!-- título da tabela -->
+                     <TableView fx:id="tabela" prefHeight="480"> <!-- tabela de produtos -->
+                        <columns> <!-- colunas da tabela -->
+                           <TableColumn fx:id="colCodigo" prefWidth="80" text="Código" /> <!-- coluna código -->
+                           <TableColumn fx:id="colNome" prefWidth="110" text="Nome" /> <!-- coluna nome -->
+                           <TableColumn fx:id="colCategoria" prefWidth="90" text="Categoria" /> <!-- coluna categoria -->
+                           <TableColumn fx:id="colSetor" prefWidth="80" text="Setor" /> <!-- coluna setor -->
+                           <TableColumn fx:id="colPrecoCompra" prefWidth="95" text="Preço Compra" /> <!-- coluna preço de compra -->
+                           <TableColumn fx:id="colPrecoVenda" prefWidth="90" text="Preço Venda" /> <!-- coluna preço de venda -->
+                           <TableColumn fx:id="colEstoque" prefWidth="60" text="Estoque" /> <!-- coluna estoque -->
+                           <TableColumn fx:id="colValidade" prefWidth="85" text="Validade" /> <!-- coluna validade -->
+                        </columns> <!-- fim das colunas -->
+                     </TableView> <!-- fim da tabela -->
+                     <Label style="-fx-font-size: 10;" text="Clique em uma linha da tabela para carregar os dados no formulário." textAlignment="RIGHT" /> <!-- dica de uso -->
+                  </VBox> <!-- fim da coluna da tabela -->
+               </HBox> <!-- fim da área principal -->
+            </VBox> <!-- fim do container da aba -->
+         </content> <!-- fim do conteúdo -->
+      </Tab> <!-- fim da aba Produtos -->
+      <Tab text="Relatórios"> <!-- segunda aba -->
+         <content> <!-- conteúdo da aba -->
+            <VBox spacing="10"> <!-- container vertical da aba -->
+               <padding><Insets bottom="10" left="10" right="10" top="10" /></padding> <!-- margem interna -->
+               <HBox spacing="10"> <!-- linha de botões dos relatórios -->
+                  <Button onAction="#relatorioVencimento" text="Próximos ao Vencimento (60 dias)" /> <!-- chama relatorioVencimento() -->
+                  <Button onAction="#relatorioEstoque" text="Estoque Baixo" /> <!-- chama relatorioEstoque() -->
+                  <Button onAction="#relatorioMargem" text="Margem Média por Categoria" /> <!-- chama relatorioMargem() -->
+                  <Button onAction="#relatorioSetor" text="Produtos por Setor" /> <!-- chama relatorioSetor() -->
+               </HBox> <!-- fim da linha de botões -->
+               <TextArea fx:id="txtRelatorio" editable="false" prefHeight="520" /> <!-- exibe o relatório -->
+            </VBox> <!-- fim do container da aba -->
+         </content> <!-- fim do conteúdo -->
+      </Tab> <!-- fim da aba Relatórios -->
+   </tabs> <!-- fim das abas -->
+</TabPane>

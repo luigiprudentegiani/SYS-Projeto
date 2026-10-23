@@ -1,0 +1,8 @@
+repository\Produtorepository.class
+controller\Produtocontroller$1.class
+model\Categoria.class
+module-info.class
+model\Produto.class
+app\Main.class
+service\Relatorio.class
+controller\Produtocontroller.class
